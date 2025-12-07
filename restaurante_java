@@ -1,0 +1,58 @@
+import java.util.Scanner;
+public class Cardapio {
+    String[] prato;
+    String nome;
+    double[] preco;
+    int pedido;
+    Scanner scn = new Scanner(System.in);;
+    public Cardapio(String titulo, String[] pratos, double[] precos){
+        this.prato = pratos;
+        this.nome = titulo;
+        this.preco = precos;
+    }
+    public double escrever_cardapio(){
+        System.out.println();
+        System.out.println(nome);
+        for(int i = 1; i < prato.length; i++){
+            System.out.printf("\n%d- R$%.2f %s\n", i, preco[i], prato[i]);
+        }
+        System.out.println("\nDigite o número do prato para escolher seu pedido.\nDigite 0 para voltar.\n");
+        System.out.print("--> ");
+        pedido = scn.nextInt();
+        return(preco[pedido]);
+    }
+    public static void main(String[] arg){
+        Scanner scn = new Scanner(System.in);
+        int escolha = 1;
+        double custo = 0;
+        Cardapio cafe = new Cardapio(  
+                                    "   *~Cafe da manha~*",
+                                    new String[]{"Voltar","Pão de queijo", "Donut", "Café", "Chá Inglês"},
+                                    new double[]{ 0      , 7             ,  13.5  ,  5    ,  5.6        }
+                                    );
+        Cardapio almoco = new Cardapio(  
+                                    "   *~almoco~*",
+                                    new String[]{"Voltar","Pizza Margarita", "Arroz Carreteiro", "Feijoada", "Baião de 2"},
+                                    new double[]{ 0      , 39.99           ,  35               ,  45       ,  24.7       }
+                                    );
+        Cardapio jantar = new Cardapio(  
+                                    "   *~Jantar~*",
+                                    new String[]{"Voltar","Pizza Calabresa", "Ceviche", "Filet de Salmão", "Risoto de camarão"},
+                                    new double[]{ 0      , 49.99           ,  37      ,  60              ,  57.5              }
+                                    );
+        while(escolha > 0){
+            System.out.print("Escolher cardápio: 1. Café da Manhã | 2. Almoço | 3. Jantar | 0. Finalizar pedido\n");
+            System.out.print("--> ");
+            escolha = scn.nextInt();
+            if(escolha == 1){
+                custo += cafe.escrever_cardapio();
+            }else if(escolha == 2){
+                custo += almoco.escrever_cardapio();
+            }else if(escolha == 3){
+                custo += jantar.escrever_cardapio();
+            }
+            System.out.printf("Total do seu pedido: R$%.2f\n\n", custo);
+        }
+        System.out.println("Pedido finalizado.");
+    }
+}
