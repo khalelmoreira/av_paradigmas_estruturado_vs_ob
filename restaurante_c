@@ -1,0 +1,188 @@
+#include <stdio.h>
+
+#include <string.h>
+ 
+float cardapioCafe() {
+
+    int pedido;
+
+    // Matriz de strings com 5 linhas e cada string pode ter até 19 caracteres (mais o '\0' no final)
+
+    char pratos[5][50];
+ 
+    // Atribuindo valores às strings
+
+    strcpy(pratos[0], "Voltar_______________________");
+
+    strcpy(pratos[1], "Pão de queijo________________");
+
+    strcpy(pratos[2], "Donut________________________");
+
+    strcpy(pratos[3], "Café_________________________");
+
+    strcpy(pratos[4], "Chá Inglês___________________");
+
+    float precos[5] = {0, 7, 13.5, 5, 5.6};
+
+    int tamanho = sizeof(pratos) / sizeof(pratos[0]);
+
+    printf("--------------Café da manhã-------------\n");
+
+    // Exibindo as strings armazenadas na matriz
+
+    for (int i = 1; i < tamanho; i++) {
+
+        printf("\n%d. %sR$%.2f\n----------------------------------------\n", i, pratos[i], precos[i]);
+
+    }
+
+    printf("\nDigite o número do prato para escolher seu pedido.\n"
+
+           "Digite 0 para voltar.\n"
+
+           "--> ");
+
+    scanf("%d", &pedido);
+
+    return precos[pedido];
+
+}
+ 
+float cardapioAlmoco() {
+
+    int pedido;
+
+    // Matriz de strings com 5 linhas e cada string pode ter até 19 caracteres (mais o '\0' no final)
+
+    char pratos[5][50];
+ 
+    // Atribuindo valores às strings
+
+    strcpy(pratos[0], "Voltar_______________________");
+
+    strcpy(pratos[1], "Pizza Margarita______________");
+
+    strcpy(pratos[2], "Arroz Carreteiro_____________");
+
+    strcpy(pratos[3], "Feijoada_____________________");
+
+    strcpy(pratos[4], "Baião de 2___________________");
+
+    float precos[5] = {0, 39.99, 35, 45, 24.7};
+
+    int tamanho = sizeof(pratos) / sizeof(pratos[0]);
+
+    printf("-----------------Almoço-----------------\n");
+
+    // Exibindo as strings armazenadas na matriz
+
+    for (int i = 1; i < tamanho; i++) {
+
+        printf("\n%d. %sR$%.2f\n----------------------------------------\n", i, pratos[i], precos[i]);
+
+    }
+
+    printf("\nDigite o número do prato para escolher seu pedido.\n"
+
+           "Digite 0 para voltar.\n"
+
+           "--> ");
+
+    scanf("%d", &pedido);
+
+    return precos[pedido];
+
+}
+ 
+float cardapioJantar() {
+
+    int pedido;
+
+    // Matriz de strings com 5 linhas e cada string pode ter até 19 caracteres (mais o '\0' no final)
+
+    char pratos[5][50];
+ 
+    // Atribuindo valores às strings
+
+    strcpy(pratos[0], "Voltar_______________________");
+
+    strcpy(pratos[1], "Pizza Calabresa______________");
+
+    strcpy(pratos[2], "Ceviche______________________");
+
+    strcpy(pratos[3], "Filet de Salmão______________");
+
+    strcpy(pratos[4], "Risoto de camarão____________");
+
+    float precos[5] = {0, 49.99, 37, 60, 57.5};
+
+    int tamanho = sizeof(pratos) / sizeof(pratos[0]);
+ 
+    printf("------------------Jantar----------------\n");
+
+    // Exibindo as strings armazenadas na matriz
+
+    for (int i = 1; i < tamanho; i++) {
+
+        printf("\n%d. %sR$%.2f\n----------------------------------------\n", i, pratos[i], precos[i]);
+
+    }
+
+    printf("\nDigite o número do prato para escolher seu pedido.\n"
+
+           "Digite 0 para voltar.\n"
+
+           "--> ");
+
+    scanf("%d", &pedido);
+
+    return precos[pedido];
+
+}
+ 
+int main() {
+
+    float custo = 0;
+
+    int escolha = 1;
+
+    while (escolha > 0) {
+
+        printf("Escolher cardápio: 1. Café da Manhã | 2. Almoço | 3. Jantar | 0. Finalizar pedido\n"
+
+               "--> ");
+
+        scanf("%d", &escolha);
+
+        switch (escolha) {
+
+            case 1:
+
+                custo += cardapioCafe();
+
+                break;
+
+            case 2:
+
+                custo += cardapioAlmoco();
+
+                break;
+
+            case 3:
+
+                custo += cardapioJantar();
+
+                break;
+
+            default:
+
+                break;
+
+        }
+
+        printf("Total do seu pedido: R$%.2f\n", custo);
+
+    }
+
+}
+ 
